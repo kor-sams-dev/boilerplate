@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="./style.css" />
+    <title>Debouncing basic</title>
+    <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js"></script>
+  </head>
+  <body>
+    <div class="item">
+      <div class="title">normal</div>
+      <div class="scroll normal">
+        <div class="content"></div>
+      </div>
+      <spen class="count count-normal">0</spen>
+    </div>
+    <div class="item">
+      <div class="title">debounce</div>
+      <div class="scroll debounce">
+        <div class="content"></div>
+      </div>
+      <spen class="count count-debounce">0</spen>
+    </div>
+    <div class="item">
+      <div class="title">throttle</div>
+      <div class="scroll throttle">
+        <div class="content"></div>
+      </div>
+      <spen class="count count-throttle">0</spen>
+    </div>
+    <script type="module" src="./index.js"></script>
+  </body>
+</html>
