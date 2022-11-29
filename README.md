@@ -28,3 +28,7 @@
 
 1. node에서 fetch를 사용할때에는 node-fetch를 설치해야 한다.
 2. ES Module을 사용하고 싶으면 package.json에 type: module을 명시한다.
+3. cdn 사용 방법
+   - head 테그 안에 script 테그를 이용하여 cdn link
+   - body 테그 안에 script 테그를 이용하여 js 작성하며 link한 라이브러리 사용하면 됨.
+   - 따로 import 할 필요 없음.
