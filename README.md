@@ -19,3 +19,12 @@
 - 전역상태관리
 - test code
 - http client 관리
+- typescript
+- css-in-css, css-in-js
+
+# TIL
+
+## 2022-11-29
+
+1. node에서 fetch를 사용할때에는 node-fetch를 설치해야 한다.
+2. ES Module을 사용하고 싶으면 package.json에 type: module을 명시한다.

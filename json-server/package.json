@@ -4,9 +4,14 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "start:todo": "json-server --watch db/todo.json --port 3001"
+    "start:server-start": "json-server --watch db/start.json --port 3001",
+    "test:start-get": "nodemon src/start/get.js",
+    "test:start-filter": "nodemon src/start/filter.js"
   },
   "dependencies": {
-    "json-server": "^0.17.1"
-  }
+    "json-server": "^0.17.1",
+    "node-fetch": "^3.3.0",
+    "nodemon": "^2.0.20"
+  },
+  "type": "module"
 }

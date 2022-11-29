@@ -1,0 +1,30 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "title": "fisrt",
+      "type": "string",
+      "value": 1,
+      "author": "typicode"
+    },
+    {
+      "id": 2,
+      "title": "second",
+      "type": "string",
+      "value": 2,
+      "author": "typicode"
+    },
+    {
+      "id": 3,
+      "title": "third",
+      "type": "number",
+      "value": 1,
+      "author": "typicode"
+    }
+  ],
+  "comments": [
+    { "id": 1, "body": "some comment", "postId": 1 },
+    { "id": 2, "body": "some comment", "postId": 3 }
+  ],
+  "profile": { "name": "typicode" }
+}
