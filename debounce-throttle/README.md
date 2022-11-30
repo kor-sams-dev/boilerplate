@@ -16,3 +16,26 @@
 - 실행방법
   - live server를 통해 index.html을 실행
 - lodash 라이브러리를 사용하여 디바운스와 쓰로틀 효과를 확인함.
+
+### react-event
+
+- 실행방법
+
+```
+// 프로젝트 실행을 위한 기초 라이브러리 설정
+yarn install
+
+// 프로젝트 시작
+yarn start
+```
+
+- react 에서 디바운스와 스로틀을 이해하기 위한 컴포넌트 생성
+  - normal: 기본 스크롤 이벤트 시 카운트 증가
+  - debounce
+    - 스크롤이 끝나고 1회 이벤트 발생
+    - setTimeout을 활용함
+  - throttle
+    - 스크롤이 발생하는 동안 주기적으로 이벤트 발생
+    - setTimeout을 활용함
+  - lodashDebounce, lodashThrottle
+    - lodash 라이브러리를 활용한 컴포넌트 이벤트 작성
