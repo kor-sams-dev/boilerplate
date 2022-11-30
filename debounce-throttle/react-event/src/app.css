@@ -13,8 +13,9 @@
 
 .item {
   position: relative;
-  width: 300px;
-  height: 250px;
+  width: 250px;
+  height: 150px;
+  margin: 20px;
 }
 
 .scroll {
