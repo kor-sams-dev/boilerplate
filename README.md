@@ -11,8 +11,12 @@
 # TO-DO
 
 - json-server
-- 디바운싱
-- 쓰로틀링
+  - 기본 사용법
+  - filter 사용 법
+- 디바운싱, 쓰로틀링
+  - 기본 개념
+  - lodash 라이브러리를 활용한 방식
+  - React를 활용한 디바운싱, 쓰로틀링 컴포넌트
 - 커스텀 훅
 - 회원가입, 로그인
 - OAuth
@@ -21,6 +25,7 @@
 - http client 관리
 - typescript
 - css-in-css, css-in-js
+- docker
 
 # TIL
 
