@@ -8,15 +8,20 @@
 
 <br />
 
-# TO-DO
+# Contents
 
 - json-server
   - [x] 기본 사용법
   - [x] filter 사용 법
+  - [ ] 커스텀 라우트 사용 법
 - 디바운싱, 쓰로틀링
   - [x] 기본 개념
   - [x] lodash 라이브러리를 활용한 방식
   - [x] React를 활용한 디바운싱, 쓰로틀링 컴포넌트
+  - [ ] 무한스크롤
+    - [ ] 일반 무한스크롤
+    - [ ] 디바운싱 무한스크롤
+    - [ ] 스로틀링 무한스크롤
 - 커스텀 훅
 - 회원가입, 로그인
 - OAuth
@@ -40,6 +45,8 @@
   - [ ] styled-component
 - docker
 - react 
+  - [ ] MVC 패턴
+  - [ ] MVVM 패턴
   - [ ] todo project
 - vue
   - [ ] todo project
