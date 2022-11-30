@@ -11,23 +11,39 @@
 # TO-DO
 
 - json-server
-  - 기본 사용법
-  - filter 사용 법
+  - [x] 기본 사용법
+  - [x] filter 사용 법
 - 디바운싱, 쓰로틀링
-  - 기본 개념
-  - lodash 라이브러리를 활용한 방식
-  - React를 활용한 디바운싱, 쓰로틀링 컴포넌트
+  - [x] 기본 개념
+  - [x] lodash 라이브러리를 활용한 방식
+  - [x] React를 활용한 디바운싱, 쓰로틀링 컴포넌트
 - 커스텀 훅
 - 회원가입, 로그인
 - OAuth
 - 전역상태관리
+  - [ ] redux
+    - [ ] 함수형 컴포넌트
+    - [ ] 클레스형 컴포넌트
+  - [ ] recoil
+  - [ ] mobx
 - test code
+  - [ ] jest
+    - [ ] unit test
+    - [ ] dom element test
 - http client 관리
+  - [ ] node fetch
+  - [ ] axios
 - typescript
 - css-in-css, css-in-js
+  - [ ] scss
+  - [ ] postcss
+  - [ ] styled-component
 - docker
-
-# TIL
+- react 
+  - [ ] todo project
+- vue
+  - [ ] todo project
+# TIL  
 
 ## 2022-11-29
 
