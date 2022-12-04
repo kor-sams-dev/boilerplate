@@ -22,7 +22,6 @@
     - [ ] 일반 무한스크롤
     - [ ] 디바운싱 무한스크롤
     - [ ] 스로틀링 무한스크롤
-- 커스텀 훅
 - 회원가입, 로그인
 - OAuth
 - 전역상태관리
@@ -39,20 +38,42 @@
   - [ ] node fetch
   - [ ] axios
 - typescript
+  - [x] Get Started
 - css-in-css, css-in-js
   - [ ] scss
   - [ ] postcss
   - [ ] styled-component
+  - [ ] Tailwind
 - docker
-- react 
+- redis
+- Jenkins
+- react
+  - [ ] 커스텀 훅
   - [ ] MVC 패턴
   - [ ] MVVM 패턴
   - [ ] todo project
+  - [ ] propTypes
 - vue
   - [ ] todo project
-# TIL  
+- Loading element
+  - [ ] HTML, CSS...
+  - [ ] React
+  - [ ] Vue
+- skeleton element
+  - [ ] HTML, CSS...
+  - [ ] React
+  - [ ] Vue
+- open API
+  - 네이버 지도
+    - [ ] HTML, CSS, JS
+    - [ ] React
+    - [ ] Vue
+- story book
+
+# TIL
 
 ## 2022-11-30
+
 1. 클레스형 컴포넌트에서는 리덕스 사용하는게 매우 어렵다... <br /> 그냥 쓰는거도 어려운데 클레스형 컴포넌트에 적용하느라 힘들었다.
 2. react propTypes를 이용해서 타입 체크를 하는부분도 공부해야 할 것 같다. <br /> 타입스크립트를 공부하는게 더 빠를수도 있을거같긴 한데...
 
