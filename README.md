@@ -39,6 +39,11 @@
   - [ ] axios
 - typescript
   - [x] Get Started
+  - [x] The basics
+    - Handbook
+      - [x] standard
+      - [x] function
+        - [ ] this에대해 재학습 필요
 - css-in-css, css-in-js
   - [ ] scss
   - [ ] postcss
@@ -71,6 +76,10 @@
 - story book
 
 # TIL
+
+## 2022-12-07
+
+1. this에 대해 조금 더 학습을 해야 할 듯. javascript this 숙지하고 typescript function의 this에 대해 다시 확인해야 함!!!
 
 ## 2022-12-04
 
