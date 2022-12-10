@@ -1,4 +1,4 @@
-# Get Started
+# [Get Started](https://storybook.js.org/tutorials/intro-to-storybook/react/en/get-started/)
 
 - 스토리북은 개발 모드에서 앱과 함께 실행됨.
 - 비즈니스 로직과 맥락으로부터 분리된 UI 컴포넌트를 만들 수 있도록 도와줌.
