@@ -6,9 +6,7 @@
 
 필요한 사항에 대해 보일러 플레이트를 작성해둡니다.
 
-<br />
-
-# Contents
+## Contents
 
 - json-server
   - [x] 기본 사용법
@@ -79,3 +77,4 @@
   - [ ] React
     - [ ] intro to storybook
   - [ ] Vue
+- [x] 마크다운(.md) 문법 숙지
