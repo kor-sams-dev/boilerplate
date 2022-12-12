@@ -1,3 +1,7 @@
+## 2022-12-12
+
+1. markdown 기본 문법 숙지
+
 ## 2022-12-07
 
 1. this에 대해 조금 더 학습을 해야 할 듯. javascript this 숙지하고 typescript function의 this에 대해 다시 확인해야 함!!!
