@@ -76,5 +76,9 @@
 - story book
   - [ ] React
     - [ ] intro to storybook
+      - [x] Get Started
+      - [ ] Simple Component
+        - [x] 한글번역 문서기준 작성 완료
+        - [ ] 영문기준 문서로 기능 및 README 수정 필요
   - [ ] Vue
 - [x] 마크다운(.md) 문법 숙지
