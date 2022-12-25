@@ -58,6 +58,9 @@
   - [ ] MVVM 패턴
   - [ ] todo project
   - [ ] propTypes
+    - SSR
+      - [ ] NEXT
+      - [ ] remix
 - vue
   - [ ] todo project
 - Loading element
