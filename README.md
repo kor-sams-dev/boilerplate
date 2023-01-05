@@ -91,8 +91,8 @@
 - [ ] .env 파일 관리
 - [ ] 정규표현식 문법 숙지
   - [x] Character classes
-  - [ ] Anchors
-  - [ ] Escaped characters
+  - [x] Anchors
+  - [x] Escaped characters
   - [ ] Groups & References
   - [ ] Lookaround
   - [ ] Quantifiers & Alternation
