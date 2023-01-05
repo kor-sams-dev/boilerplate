@@ -66,6 +66,9 @@
     - [ ] TUI Grid
 - vue
   - [ ] todo project
+- svelte
+  - [ ] todo project
+  - [ ] svelte-kit
 - Loading element
   - [ ] HTML, CSS...
   - [ ] React
