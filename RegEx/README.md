@@ -23,3 +23,5 @@
 6. Quantifiers & Alternation
 7. Substitution
 8. Flags
+
+## [엘리님 유튜브 강의 수강](https://www.youtube.com/watch?v=t3M6toIflyQ)
