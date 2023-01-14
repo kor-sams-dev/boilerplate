@@ -60,6 +60,7 @@
   - [ ] propTypes
   - SSR
     - [ ] NEXT
+      - [ ] Basic
     - [ ] remix
   - library
     - [ ] MUI Component
