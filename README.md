@@ -58,6 +58,7 @@
   - [ ] MVVM 패턴
   - [ ] todo project
   - [ ] propTypes
+  - [ ] Carousel
   - SSR
     - [ ] NEXT
       - [ ] Basic
