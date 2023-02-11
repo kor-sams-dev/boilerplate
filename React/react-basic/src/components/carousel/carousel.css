@@ -1,0 +1,66 @@
+.carousel-container {
+  position: relative;
+  width: 327px;
+  height: 245px;
+  overflow: hidden;
+}
+
+.carousel-container .image-container {
+  display: flex;
+}
+
+.carousel-container .image-container .image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  flex: none;
+}
+
+.carousel-container .carousel-prev-button,
+.carousel-container .carousel-next-button {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  border: none;
+  background-color: transparent;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+
+.carousel-container .carousel-prev-button {
+  left: 10px;
+}
+
+.carousel-container .carousel-next-button {
+  right: 10px;
+}
+
+.carousel-container .carousel-prev-button .prev-button-image,
+.carousel-container .carousel-next-button .next-button-image {
+  width: 100%;
+  height: 100%;
+}
+
+.carousel-container .dot-container {
+  position: absolute;
+  bottom: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.carousel-container .dot-container li {
+  background-color: rgba(255, 255, 255, 0.25);
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  margin: 0 2px;
+  cursor: pointer;
+}
+
+.carousel-container .dot-container li.active {
+  background-color: white;
+}
