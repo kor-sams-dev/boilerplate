@@ -44,11 +44,14 @@
       - [x] standard
       - [x] function
         - [ ] this에대해 재학습 필요
-- css-in-css, css-in-js
-  - [ ] scss
-  - [ ] postcss
-  - [ ] styled-component
-  - [ ] Tailwind
+- css
+  - only css
+    - [ ] Ambient Light Effect
+  - css-in-css, css-in-js
+    - [ ] scss
+    - [ ] postcss
+    - [ ] styled-component
+    - [ ] Tailwind
 - docker
 - redis
 - Jenkins
