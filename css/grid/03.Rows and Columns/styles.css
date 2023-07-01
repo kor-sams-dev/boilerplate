@@ -1,0 +1,37 @@
+body {
+  width: 100vw;
+  height: 100vh;
+}
+
+.grid {
+  display: grid;
+  gap: 10px;
+  grid-template-columns: repeat(4, 100px);
+  grid-template-rows: repeat(4, 100px);
+}
+
+.header {
+  background-color: greenyellow;
+  grid-column-start: 1;
+  grid-column-end: 5;
+}
+
+.content {
+  background-color: cornflowerblue;
+  grid-column-start: 1;
+  grid-column-end: 4;
+  grid-row-start: 2;
+  grid-row-end: 4;
+}
+
+.nav {
+  background-color: plum;
+  grid-row-start: 2;
+  grid-row-end: 4;
+}
+
+.footer {
+  background-color: peru;
+  grid-column-start: 1;
+  grid-column-end: 5;
+}

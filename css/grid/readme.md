@@ -23,12 +23,18 @@ CSS의 Display Grid에 대해 공부합니다.
     - repeat을 사용하여 반복되는 영역을 지정하는 방법
 
 3. Rows and Columns
-4. Shortcuts
-5. Line Naming
-6. Grid Template
-7. Place Items
-8. Place Content
-9. Auto Columns and Rows
-10. minmax
-11. auto-fit and auto-fill
-12. min-content, max-content
+
+- 기초 이론에 대해 학습
+  - grid-(column or row)-start와 grid-(column or row)-end를 이용하여 영역을 지정하는 방법
+    - 시작 지점과 끝 지점을 layout의 칸 기준이 아니라 grid의 line기준으로 지정함.
+    - 해당 방식을 사용하면 grid area의 이름을 사용하지 않고도 영역을 지정할 수 있음.
+
+1. Shortcuts
+2. Line Naming
+3. Grid Template
+4. Place Items
+5. Place Content
+6. Auto Columns and Rows
+7. minmax
+8. auto-fit and auto-fill
+9. min-content, max-content
