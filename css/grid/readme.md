@@ -30,11 +30,21 @@ CSS의 Display Grid에 대해 공부합니다.
     - 해당 방식을 사용하면 grid area의 이름을 사용하지 않고도 영역을 지정할 수 있음.
 
 1. Shortcuts
-2. Line Naming
-3. Grid Template
-4. Place Items
-5. Place Content
-6. Auto Columns and Rows
-7. minmax
-8. auto-fit and auto-fill
-9. min-content, max-content
+
+- grid-(column or row)-start와 grid-(column or row)-end를 단축해서 사용하는 방법
+  - grid-(column or row)를 이용하여 시작과 끝을 한번에 지정하는 방법
+    - grid-(column or row): start / end
+- 끝 지점을 명시하는 방법
+  - end를 마이너스 값으로 지정하면 끝 지점으로부터 역으로 카운트함.
+- span을 사용하여 몇개의 칸을 차지하는지 지정하는 방법
+  - grid-(column or row): span (칸 수)
+  - 시작지점을 지정하지 않으면 자동으로 grid가 적절한 row를 시작지점으로 지정함.
+
+1. Line Naming
+2. Grid Template
+3. Place Items
+4. Place Content
+5. Auto Columns and Rows
+6. minmax
+7. auto-fit and auto-fill
+8. min-content, max-content

@@ -1,0 +1,51 @@
+body {
+  width: 100vw;
+  height: 100vh;
+}
+
+.grid {
+  display: grid;
+  gap: 10px;
+  grid-template-columns: repeat(4, 100px);
+  grid-template-rows: repeat(5, 100px);
+}
+
+.header {
+  background-color: greenyellow;
+  /* grid-column-start: 1;
+  grid-column-end: 5; */
+  /* start, end 를 단축하는 방법 */
+  /* grid-column: 1 / 5; */
+  /* end를 앞에서 세는게 아니라 뒤에서 세는 방법 */
+  grid-column: 1 / -1;
+}
+
+.content {
+  background-color: cornflowerblue;
+  /* grid-column-start: 1;
+  grid-column-end: 4;
+  grid-row-start: 2;
+  grid-row-end: 4; */
+  /* grid-column: 1 / 4; */
+  grid-column: 1 / -2;
+  /* grid-row: 2 / 4; */
+  /* grid-row: 2 / -2; */
+  grid-row: 2 / span 2;
+}
+
+.nav {
+  background-color: plum;
+  /* grid-row-start: 2;
+  grid-row-end: 4; */
+  /* grid-row: 2 / 4; */
+  grid-row: span 2;
+}
+
+.footer {
+  background-color: peru;
+  /* grid-column-start: 1;
+  grid-column-end: 5; */
+  /* grid-column: 1 / 5; */
+  /* grid-column: 1 / -1; */
+  grid-column: span 4;
+}
