@@ -32,5 +32,3 @@ CSS의 Display Grid에 대해 공부합니다.
 10. minmax
 11. auto-fit and auto-fill
 12. min-content, max-content
-
-## [엘리님 유튜브 강의 수강](https://www.youtube.com/watch?v=t3M6toIflyQ)
