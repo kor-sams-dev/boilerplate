@@ -1,0 +1,36 @@
+body {
+  width: 100vw;
+  height: 100vh;
+}
+
+.grid {
+  display: grid;
+  /* grid-template-columns: repeat(4, 200px); */
+  grid-template-columns: auto 200px;
+  grid-template-rows: 100px repeat(2, 200px) 100px;
+  grid-template-areas:
+    "header header header header"
+    "content content content nav"
+    "content content content nav"
+    "footer footer footer footer";
+}
+
+.header {
+  background-color: greenyellow;
+  grid-area: header;
+}
+
+.content {
+  background-color: cornflowerblue;
+  grid-area: content;
+}
+
+.nav {
+  background-color: plum;
+  grid-area: nav;
+}
+
+.footer {
+  background-color: peru;
+  grid-area: footer;
+}
