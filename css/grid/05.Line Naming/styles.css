@@ -1,0 +1,32 @@
+body {
+  width: 100vw;
+  height: 100vh;
+}
+
+.grid {
+  display: grid;
+  gap: 10px;
+  grid-template-columns: [first-line] 100px [second-line] 100px [third-line] 100px [fourth-line] 100px [fifth-line] 100px;
+  grid-template-rows: repeat(5, 100px [auto-row]);
+}
+
+.header {
+  background-color: greenyellow;
+  grid-column: 1 / -1;
+}
+
+.content {
+  background-color: cornflowerblue;
+  grid-column: first-line / fourth-line;
+  grid-row: auto-row 1 / span 2;
+}
+
+.nav {
+  background-color: plum;
+  grid-row: span 2;
+}
+
+.footer {
+  background-color: peru;
+  grid-column: span 4;
+}
