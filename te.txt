@@ -1,0 +1,459 @@
+This chapter covers
+이번 장에서는 다음을 다룹니다.
+
+- The different types of tests and when to use them
+- 테스트의 다양한 유형과 사용 시기
+- Writing your first automated tests
+- 첫 번째 자동화된 테스트 작성하기
+- How to balance coupling, maintenance, and cost
+- 결합, 유지보수 및 비용을 균형있게 조절하는 방법
+
+In the previous chapter, to facilitate explaining what tests are and their benefits, I put all the different types of tests in a single, big conceptual box.
+이전 장에서는 테스트가 무엇이고 이점은 무엇인지 설명하기 쉽도록 모든 유형의 테스트를 하나의 큰 개념적 상자에 넣었습니다.
+I showed tests that dealt with databases, tests that directly called one function, and tests that called multiple functions.
+데이터베이스를 다루는 테스트, 하나의 함수를 직접 호출하는 테스트, 여러 함수를 호출하는 테스트를 보여줬습니다.
+In this chapter, I’ll take tests out of that box and put them into separate shelves, each one containing tests of a different kind.
+이 장에서는 테스트를 그 상자에서 꺼내서 서로 다른 유형의 테스트를 포함하는 개별 선반에 넣겠습니다.
+It’s essential to understand how tests fit into different categories because differ- ent types of tests serve different purposes.
+테스트가 서로 다른 범주에 어떻게 맞는지 이해하는 것이 중요합니다. 서로 다른 유형의 테스트는 서로 다른 목적을 가지고 있기 때문입니다.
+When building a car, for example, it’s crucial to test the engine and the ignition system individually, but it’s also vital to ensure they work together.
+예를 들어 자동차를 만들 때 엔진과 점화 시스템을 개별적으로 테스트하는 것이 중요하지만, 함께 작동하는지도 확인하는 것이 중요합니다.
+If not, both the engine and the ignition system are use- less.
+그렇지 않으면 엔진과 점화 시스템 모두 쓸모없습니다.
+It’s equally as important to test whether people can drive the car once all parts are in place, or else nobody will go anywhere.
+모든 부품이 제자리에 있으면 사람들이 자동차를 운전할 수 있는지 테스트하는 것도 중요합니다. 그렇지 않으면 아무도 어디에도 가지 못합니다.
+When we build software, we want to have similar guarantees.
+소프트웨어를 만들 때 우리는 비슷한 보장을 원합니다.
+We want to ensure our functions work in isolation as well as in integration.
+우리는 함수가 독립적으로 작동하는 것뿐만 아니라 통합에서도 작동하는지 확인하고 싶습니다.
+And, when we put all of these functions together in an application, we want to ensure customers can use it.
+그리고 이러한 모든 함수를 응용 프로그램에 모두 결합할 때 고객이 사용할 수 있는지 확인하고 싶습니다.
+These different types of tests serve different purposes, run at different frequencies, and take different amounts of time to complete.
+이러한 서로 다른 유형의 테스트는 서로 다른 목적으로 실행되며, 서로 다른 빈도로 실행되며, 완료하는 데 걸리는 시간도 다릅니다.
+Some are more suited to guide you through the development phase, whereas others can make it easier to test a feature only after it’s complete.
+일부는 개발 단계를 안내하는 데 더 적합하고, 다른 일부는 기능이 완료된 후에만 테스트하기 쉽게 만들 수 있습니다.
+Some tests interface directly with your code, and others inter- act with your application through a graphical interface, as an end user would do.
+일부 테스트는 코드와 직접 인터페이스하고, 다른 일부는 그래픽 인터페이스를 통해 응용 프로그램과 상호 작용합니다.
+It’s your job to decide which of these tests to use and when.
+이러한 테스트 중 어떤 것을 사용할지와 언제 사용할지는 당신의 일입니다.
+I’ll teach you about these different types of tests by writing examples for small func- tions and applications.
+작은 함수와 응용 프로그램에 대한 예제를 작성하여 이러한 서로 다른 유형의 테스트에 대해 가르쳐 드리겠습니다.
+Throughout the chapter, I’ll avoid being overprescriptive.
+이 장을 통해 지나치게 규정적이지 않도록 노력하겠습니다.
+Instead, I will focus on the outcomes and drawbacks of each kind of test so that you can make your own decisions.
+대신 각 테스트 유형의 결과와 단점에 초점을 맞추어 직접 결정할 수 있도록 하겠습니다.
+I want to empower you to decide which types of tests will benefit your project the most throughout the different phases of its development and give you a sense of how to incorporate different types of tests into your workflow.
+프로젝트의 다양한 단계에서 가장 많은 이점을 얻을 수 있는 테스트 유형을 결정할 수 있도록 당신에게 권한을 부여하고, 다양한 유형의 테스트를 워크 플로에 통합하는 방법을 알려드리겠습니다.
+Learning about these different labels is helpful because they help you decide what your tests should and should not cover in each situation.
+이러한 다른 레이블에 대해 배우는 것은 도움이 됩니다. 이 레이블은 각 상황에서 테스트가 무엇을 포함해야 하는지 포함하지 않아야 하는지 결정하는 데 도움이 됩니다.
+In reality, these definitions are a bit blurry.
+실제로 이러한 정의는 약간 흐릿합니다.
+You will rarely find yourself proactively labeling different types of tests, but knowing that labels exist and having good examples for each of them is invaluable for creating strong quality guarantees and for unambiguous communication with colleagues.
+다른 유형의 테스트에 미리 레이블을 붙이는 일은 거의 없을 것입니다. 그러나 레이블이 존재하고 각각에 대한 좋은 예제가 있다는 것을 알고 있으면 강력한 품질 보증을 만드는 데 매우 유용하며 동료와의 명확한 의사 소통에도 도움이 됩니다.
+
+2.1 The testing pyramid
+2.1 테스트 피라미드
+Louis’s bakery is committed to producing the highest quality pastries East London has ever tasted.
+Louis의 빵집은 동 런던에서 지금까지 맛본 적이 없는 최고 품질의 과자를 생산하기로 했습니다.
+Louis and his team meticulously inspect every ingredient to guarantee it’s fresh and new.
+Louis와 그의 팀은 신선하고 새로운 것을 보장하기 위해 모든 재료를 꼼꼼히 검사합니다.
+The same happens to all the parts of his cheesecakes.
+같은 일이 치즈 케이크의 모든 부분에도 일어납니다.
+From the crust to the batter, each step in the recipe goes through rigorous quality control to scrutinize its texture and consistency.
+크러스트에서 배터까지 레시피의 각 단계는 질감과 일관성을 검사하기 위해 엄격한 품질 관리를 거칩니다.
+For every cheesecake made, Louis makes sure also to bake a “proof”: a small separate piece for him to savor—a sweet reward and the ultimate proof that Louis’s cheesecakes are undeniably delectable.
+Louis가 만든 모든 치즈 케이크에는 Louis가 즐길 수 있는 작은 별도의 조각인 “증명”도 있습니다. 달콤한 보상과 Louis의 치즈 케이크가 틀림없이 맛있음을 증명하는 궁극적인 증거입니다.
+When you keep your desserts up to such high standards, you don’t want your soft- ware to fall behind.
+이렇게 높은 기준을 유지하면 소프트웨어가 뒤처지는 것을 원하지 않습니다.
+For that, there’s a lot we can learn from the way Louis ensures his baked goods are the best in town.
+그를 위해 Louis가 구시 타운에서 최고의 제빵 제품을 보장하는 방식에서 많은 것을 배울 수 있습니다.
+In the same way that low-quality ingredients ruin a cake, poorly written functions ruin a piece of software.
+저품질의 재료가 케이크를 망치는 것처럼 잘못 작성된 함수는 소프트웨어를 망치게 됩니다.
+If your functions don’t work, then your whole application won’t.
+함수가 작동하지 않으면 응용 프로그램 전체가 작동하지 않습니다.
+Testing these tiny pieces of software is the first step in achieving high-quality digital products.
+이러한 작은 소프트웨어 조각을 테스트하는 것은 고품질의 디지털 제품을 만드는 첫 번째 단계입니다.
+The next step is to ensure that all the intermediary products of this process are as high quality as its parts.
+다음 단계는 이 프로세스의 중간 제품이 부품만큼 고품질인지 확인하는 것입니다.
+When combining those functions into larger components, like when combining ingredients to make dough, you must ensure that the blend is as good as its individual items.
+이러한 함수를 도우를 만드는 것처럼 더 큰 구성 요소로 결합할 때 각 항목만큼 블렌드가 좋은지 확인해야 합니다.
+Finally, just as Louis tastes his cakes as his customers would, we must also try our software as our users would.
+마지막으로 Louis가 고객이 먹는 것처럼 케이크를 맛보는 것처럼 우리도 사용자가 사용하는 것처럼 소프트웨어를 시도해야 합니다.
+If all of its modules work, but the application itself doesn’t, it’s a useless product.
+모든 모듈이 작동하지만 응용 프로그램 자체가 작동하지 않으면 쓸모없는 제품입니다.
+
+- Test individual ingredients.
+- 개별 재료를 테스트합니다.
+- Test the combination of the primary ingredients into intermediary products.
+- 기본 재료의 조합을 중간 제품으로 테스트합니다.
+- Test the final product.
+- 최종 제품을 테스트합니다.
+Mike Cohn’s testing pyramid (figure 2.1)—the metaphor whose name des- ignates this section—comes from this idea that different parts of your soft- ware must be tested in diverse ways and with varying regularity.
+Mike Cohn의 테스트 피라미드(그림 2.1)는 이 섹션의 이름을 지은 은유에서 나온 것으로, 소프트웨어의 다른 부분은 다양한 방식으로 다양한 정기로 테스트되어야 한다는 아이디어에서 나옵니다.
+It divides tests into the following three categories:
+이 테스트는 다음 세 가지 범주로 나뉩니다.
+- UI tests
+- UI 테스트
+- Service tests
+- 서비스 테스트
+- Unit tests
+- 단위 테스트
+The higher the tests are in the pyramid, the less frequently they run and the more value they provide.
+피라미드의 테스트가 높을수록 실행 빈도가 낮고 제공하는 가치가 높습니다.
+Tests in the top are few, and tests in the bottom are numerous.
+맨 위의 테스트는 적고 맨 아래의 테스트는 많습니다.
+Unit tests attest to the quality of the most atomic unit in your software: your func- tions.
+단위 테스트는 소프트웨어의 가장 원자적인 단위인 함수의 품질을 보증합니다.
+Service tests ensure these functions work in integration as a service.
+서비스 테스트는 이러한 함수가 서비스로 통합되어 작동함을 보장합니다.
+UI tests ver- ify your work from a user’s perspective by interacting with your software through the user interface it provides.
+UI 테스트는 사용자 인터페이스를 통해 소프트웨어와 상호 작용하여 사용자의 관점에서 작업을 확인합니다.
+The size of the pyramid’s layers indicates how many tests of that kind we should write.
+피라미드의 층의 크기는 해당 유형의 테스트를 얼마나 많이 작성해야 하는지를 나타냅니다.
+Their placement in the pyramid suggests how strong the guarantees those tests provide are.
+피라미드의 위치는 해당 테스트가 제공하는 보증의 강도를 나타냅니다.
+The higher up a test fits into the pyramid, the more valuable it is.
+테스트가 피라미드에 높이 들어갈수록 더 가치가 있습니다.
+Back to our baking analogy: unit tests are analogous to inspecting individual ingre- dients.
+우리의 베이킹 비유로 돌아가면, 단위 테스트는 개별 재료를 검사하는 것과 같습니다.
+It’s a reasonably quick and cheap task that can be done multiple times quite early in the overall process, but it provides little value when compared to further qual- ity control steps.
+이것은 전체 프로세스에서 여러 번 수행할 수 있는 비교적 빠르고 저렴한 작업이지만, 추가 품질 관리 단계와 비교할 때는 거의 가치가 없습니다.
+Unit tests fit into the bottom part of the pyramid because we have many of them, but their quality assurance guarantees aren’t as strict as the other tests’.
+단위 테스트는 많은 테스트가 있지만 품질 보증 보증이 다른 테스트보다 엄격하지 않기 때문에 피라미드의 하단 부분에 들어갑니다.
+Service tests are analogous to inspecting the intermediary products of the recipe.
+서비스 테스트는 레시피의 중간 제품을 검사하는 것과 같습니다.
+In comparison to the inspection of individual ingredients, these tests are reasonably more complex and can be done only in the later phases of the overall process.
+개별 재료를 검사하는 것과 비교하면 이러한 테스트는 비교적 더 복잡하며 전체 프로세스의 후반 단계에서만 수행할 수 있습니다.
+None- theless, they provide more compelling evidence that a heavenly cheesecake is about to materialize.
+그럼에도 불구하고, 이들은 천국의 치즈 케이크가 형상화되려고 한다는 더 강력한 증거를 제공합니다.
+They fit into the middle of the pyramid because you should have fewer service tests than unit tests and because they provide stronger quality guarantees.
+서비스 테스트는 단위 테스트보다 적어야 하고 더 강력한 품질 보증을 제공하기 때문에 피라미드의 중간에 들어갑니다.
+UI tests are analogous to tasting your cheesecake once it’s done.
+UI 테스트는 치즈 케이크가 완성된 후 맛을 본 것과 같습니다.
+They tell you whether the final product matches your expectations.
+그들은 최종 제품이 당신의 기대에 부합하는지 알려줍니다.
+To perform these tests, you must have gone through the entire recipe and have a finished product.
+이러한 테스트를 수행하려면 전체 레시피를 거쳐 완성된 제품이 있어야 합니다.
+They go into the top of the pyramid because these test should be the most sporadic and are the ones that provide the most stringent guarantees.
+이러한 테스트는 가장 불규칙하고 가장 엄격한 보증을 제공하는 테스트이므로 피라미드의 맨 위에 있습니다.
+Each one of the pyramid’s testing layers builds on top of the one underneath.
+피라미드의 각 테스트 층은 아래층 위에 쌓입니다.
+All of them help us assert the quality of the final product, but at different stages of the process.
+모두 최종 제품의 품질을 확인하는 데 도움이 되지만 프로세스의 다른 단계에서 확인됩니다.
+Without fresh ingredients, for example, you can’t have a luxurious batter.
+예를 들어 신선한 재료가 없으면 고급스러운 배터를 만들 수 없습니다.
+Furthermore, without a luxurious batter, you can’t have a sublime cheesecake.
+또한 고급스러운 배터가 없으면 숭고한 치즈 케이크를 만들 수 없습니다.
+WARNING This terminology is not used consistently throughout the industry.
+경고 이 용어는 업계에서 일관되게 사용되지 않습니다.
+You may see people referring to these same categories with different names.
+사람들이 다른 이름으로 동일한 범주를 참조하는 것을 볼 수 있습니다.
+The separation between these categories is blurry, just as it is to differentiate one kind of test from another when we see the source code.
+이러한 범주 사이의 구분은 소스 코드를 볼 때 다른 종류의 테스트를 구분하는 것과 마찬가지로 흐릿합니다.
+Mike’s pyramid is, in general, an excellent mental framework.
+Mike의 피라미드는 일반적으로 훌륭한 정신적 구조입니다.
+Separating tests into different categories is instrumental in determining how many of each type we should write and how often they should run.
+테스트를 서로 다른 범주로 분리하는 것은 각 유형의 테스트를 얼마나 자주 작성해야 하는지와 얼마나 자주 실행해야 하는지를 결정하는 데 중요합니다.
+But I find it problematic to divide tests by their target, be it a function, service, or interface.
+그러나 함수, 서비스 또는 인터페이스와 같은 대상으로 테스트를 분할하는 것이 문제가 있다고 생각합니다.
+If, for example, you are writing tests that target a web application, should all of its tests be considered UI tests? Even though you are testing the client itself, you may have separate tests for individual functions and other tests that actually interact with the GUI.
+예를 들어 웹 응용 프로그램을 대상으로 하는 테스트를 작성하는 경우 모든 테스트를 UI 테스트로 간주해야 합니까? 클라이언트 자체를 테스트하더라도 개별 함수에 대한 별도의 테스트와 실제 GUI와 상호 작용하는 다른 테스트가 있을 수 있습니다.
+If your product is a RESTful API and you test it by sending it HTTP requests, is this a service test or a UI test? Even though you are testing a service, the HTTP API is the interface provided to your users.
+제품이 RESTful API이고 HTTP 요청을 보내서 테스트하는 경우 이것은 서비스 테스트인가 UI 테스트인가? 서비스를 테스트하더라도 HTTP API는 사용자에게 제공되는 인터페이스입니다.
+Instead of dividing tests by their targets, I suggest that we separate tests by how broad their scope is.
+대상에 따라 테스트를 분할하는 대신 범위가 얼마나 넓은지에 따라 테스트를 분할하는 것이 좋습니다.
+The larger the portion of your software a test makes up, the higher it will be placed in the pyramid.
+테스트가 차지하는 소프트웨어의 부분이 클수록 피라미드에 높이 배치됩니다.
+This revised pyramid (shown in figure 2.2) divides tests into three categories, too, but labels them differently and used the level of isolation of each test as the main criterion for its divi- sion.
+이 수정된 피라미드(그림 2.2)도 테스트를 세 가지 범주로 나누지만, 다르게 레이블을 붙이고 각 테스트의 격리 수준을 주요 기준으로 나눕니다.
+The new labels are as fol- lows:
+새 레이블은 다음과 같습니다.
+- End-to-end tests
+- End-to-end 테스트
+- Integration tests
+- 통합 테스트
+- Unit tests
+- 단위 테스트
+Unit tests are the same as in Mike’s original pyramid.
+단위 테스트는 Mike의 원래 피라미드와 동일합니다.
+They validate the most atomic building blocks of your software: its functions.
+그것은 소프트웨어의 가장 원자적인 구성 요소인 함수를 검증합니다.
+The tests that directly interact with individ- ual functions in chapter 1 fit into this category.
+1장에서 개별 함수와 직접 상호 작용하는 테스트는 이 범주에 속합니다.
+The scope of these tests is the smallest possible, and they assert only the quality of individual functions.
+이러한 테스트의 범위는 가능한 한 작으며 개별 함수의 품질만 보증합니다.
+Integration tests validate how the different pieces of your software work together.
+통합 테스트는 소프트웨어의 다른 부분이 어떻게 함께 작동하는지 확인합니다.
+Tests that call a function and check whether it has updated items in a database are in this category.
+함수를 호출하고 데이터베이스에 항목이 업데이트되었는지 확인하는 테스트는 이 범주에 속합니다.
+An example of an integration test is the test in chapter 1 that ensures that only available items can be added to the cart.
+통합 테스트의 예는 1장의 테스트로, 장바구니에 추가할 수 있는 항목은 사용 가능한 항목만 확인합니다.
+The scope of these tests is broader than the scope of unit tests but smaller than the scope of end-to-end tests.
+이러한 테스트의 범위는 단위 테스트의 범위보다 넓지만 엔드 투 엔드 테스트의 범위보다는 작습니다.
+They assert the quality of the intermediary steps of the process.
+그들은 프로세스의 중간 단계의 품질을 보증합니다.
+End-to-end tests validate your application from a user’s perspective, treating your software as much as a black box as possible.
+엔드 투 엔드 테스트는 사용자의 관점에서 소프트웨어를 가능한 한 블랙 박스로 취급하여 응용 프로그램을 확인합니다.
+A test that controls a web browser and interacts with your application by clicking buttons and verifying labels is in this cate- gory.
+버튼을 클릭하고 레이블을 확인하여 웹 브라우저를 제어하고 응용 프로그램과 상호 작용하는 테스트는 이 범주에 속합니다.
+End-to-end tests correspond to tasting a sample of your cheesecake.
+엔드 투 엔드 테스트는 치즈 케이크의 샘플을 맛보는 것과 같습니다.
+Their scope is the entire application and its features.
+그들의 범위는 전체 응용 프로그램과 기능입니다.
+As in the real world, tests don’t necessarily need to be in one category or the other.
+실제 세계와 마찬가지로 테스트는 반드시 한 범주에 속할 필요는 없습니다.
+Many times they will fit between groups, and that’s fine.
+많은 경우 그들은 그룹 사이에 맞을 것이며, 괜찮습니다.
+These categories don’t exist for us to write labels on top of each of our tests.
+이러한 범주는 우리가 각 테스트 위에 레이블을 붙이기 위해 존재하지 않습니다.
+They exist to guide us toward better and more reliable software, indicating which tests we should write, when, and how much.
+이러한 테스트는 우리가 더 나은 소프트웨어를 만들도록 안내하는 데 존재합니다. 어떤 테스트를 언제 얼마나 작성해야 하는지를 나타냅니다.
+For a detailed comparison between the different aspects of each type of test, see table 2.1.
+각 테스트 유형의 다른 측면을 자세히 비교하려면 표 2.1을 참조하십시오.
+
+Table 2.1
+Target
+타겟
+Quantity Speed
+Execution frequency
+Feedback level
+Costs
+Knowledge of the application
+Main goals
+Characteristics of each kind of test
+Unit tests
+Individual functions
+Numerous—several tests per function
+Very quick—usually a few milliseconds
+Numerous times during the development of a function
+Specific problematic input and output for individual functions
+Cheap—usually small, quick to update, run, and understand
+Coupled—require direct access to the code itself; address its functions
+Provide quick feedback during development time, aid refactoring, prevent regressions, and docu- ment the code’s APIs by providing usage examples
+Integration tests
+Observable behavior and the integration among multiple functions
+Somewhat frequent—many tests per observable behavior
+Average—usually up to very few seconds
+Regularly during the develop- ment of a feature
+Problematic behavior
+Moderate—medium-sized, reasonably fast to execute
+Address functionality, but also through direct access to the code; require access to com- ponents like databases, the network, or filesystems
+Guarantee adequate usage of third-party libraries, and check whether the unit under test performs the necessary side effects, such as logging or inter- acting with separate services
+End-to-end tests
+User-facing functionality
+Sparse—a few tests per feature
+Slow—usually up to many seconds or, in more complex cases, minutes
+When features are complete
+Incorrect functionality
+Expensive—take a long time to run, and
+tend to be more flaky and convoluted
+As unaware of the code as possible; interact with the application through the interface given to its users
+Guarantee the applica- tion works for its end users
+
+Using this new taxonomy, let’s think about how we’d classify specific examples of tests and where they’d fit in our revised test pyramid.
+If your end product is a RESTful API, tests that send requests to it are one kind of end-to-end test.
+If you build a web application that talks to this API, then tests that open a web browser and interact with it from a user’s perspective are also end-to-end tests, but they should be placed even higher in the pyramid.
+Tests for your React components fit somewhere between the integration and unit layers.
+You may be testing UI, but you are orienting your development process by interacting with individual parts of your application in integration with React’s API.
+NOTE Remember not to be too concerned about fitting tests into one cate- gory or another.
+The pyramid exists as a mental framework for you to think about the different types of guarantees you want to create around your soft- ware.
+Because every piece software is different, some pyramids may have a narrower base or a wider top than others, but, as a general rule, you should strive to keep the pyramid’s shape.
+
+2.2 Unit tests
+In the same way that you can’t bake tasty desserts without fresh ingredients, you can’t write great software without well-written functions.
+Unit tests help you ensure that the smallest units of your software, your functions, behave as you expect them to.
+In this section, you’ll write your first automated test: a unit test.
+To visualize precisely what these tests cover, assume that the bakery’s online store, whose components are shown in figure 2.3, consists of a React client and a Node.js backend that talks to a database and an email service.
+The tests you will write cover a small portion of this application.
+They will deal only with individual functions within your server.
+Unit tests are at the bottom of the pyramid, so their scope, shown in figure 2.4, is small.
+As we move up, you will see that the surface covered by tests will increase.
+Start by writing the function shown in listing 2.1 that will be the target of your test.
+Create a file called Cart.js, and write a class Cart that has an addToCart function.
+UNIT UNDER TEST Most of the literature related to testing refers to the target of your tests as the unit under test.
+NOTE All of the code in this book is also available on GitHub at https:// [github.com/lucasfcosta/testing-javascript-applications](http://github.com/lucasfcosta/testing-javascript-applications).
+
+```jsx
+class Cart {
+    constructor() {
+        this.items = [];
+    }
+    addToCart(item) {
+        this.items.push(item);
+} }
+module.exports = Cart;
+
+```
+
+Now think about how you’d go about testing the addToCart function.
+One of the ways would be to integrate it into a real application and use it, but then we’d run into prob- lems involving time, repeatability, and costs, as we mentioned in chapter 1.
+Having to write an entire application before you can test your code requires too much code to be written before knowing whether it works.
+Additionally, if it doesn’t work, it will be challenging to spot bugs.
+A quicker way would be to write code that imports your Cart, uses its addToCart function, and validates the result.
+Go on and write a Cart.test.js file that imports your Cart, uses its addToCart function, and checks whether a cart has the items you expected, as shown in listing 2.2.
+
+```jsx
+const Cart = require("./Cart.js");
+
+const cart = new Cart();
+cart.addToCart("cheesecake");
+
+const hasOneItem = cart.items.length === 1;
+const hasACheesecake = cart.items[0] === "cheesecake";
+
+// If both checks have succeeded, prints a success message to the console
+if (hasOneItem && hasACheesecake) {
+  console.log("The addToCart function can add an item to the cart");
+// If any of the tests failed, prints error messages
+} else {
+// Creates a comma-separated list of the actual items in the cart to display in the test’s error message
+  const actualContent = cart.items.join(", ");
+
+  console.error("The addToCart function didn't do what we expect!");
+  console.error(`Here is the actual content of the cart: ${actualContent}`);
+
+  throw new Error("Test failed!");
+}
+
+```
+
+When you execute this file using node Cart.test.js, it will tell you whether your code can successfully add cheesecake to the cart—instant and precise feedback.
+Congratulations! You have just written your first test.
+A test sets up a scenario, executes the target code, and verifies whether the output matches what you expected.
+Because tests tend to follow this same formula, you can use tools to abstract away the testing specific concerns of your code.
+One of these concerns, for example, is comparing whether the actual output matches the expected output.
+Node.js itself ships with a built-in module, called assert, to do those checks, which, in the context of tests, we call assertions.
+It contains functions to compare objects and throw errors with meaningful messages if the actual output doesn’t match what you expected.
+NOTE You can find the documentation for Node.js’s built-in assert library at https://nodejs.org/api/assert.html.
+Use assert’s deepStrictEqual function to compare the actual output with the expected output and therefore shorten your test, as shown next.
+
+```jsx
+const assert = require("assert");
+const Cart = require("./Cart.js");
+const cart = new Cart();
+cart.addToCart("cheesecake");
+// Compares the first and second arguments, and throws an insightful error if their values are different
+assert.deepStrictEqual(cart.items, ["cheesecake"]);
+console.log("The addToCart function can add an item to the cart");
+
+```
+
+Using an assertion library enables you to get rid of the convoluted logic to determine whether objects are equal.
+It also generates meaningful output, so you don’t have to manipulate strings yourself.
+Try adding a new item to the array passed as the second argument to assert .deepStrictEqual so that you can see the kind of output it produces when an asser- tion fails.
+Now suppose you implement a removeFromCart function, as shown here.
+
+```jsx
+
+class Cart {
+  constructor() {
+    this.items = [];
+  }
+  addToCart(item) {
+    this.items.push(item);
+}
+  removeFromCart(item) {
+    for (let i = 0; i < this.items.length; i++) {
+      const currentItem = this.items[i];
+      if (currentItem === item) {
+        this.items.splice(i, 1);
+      }
+} }
+}
+module.exports = Cart;
+
+```
+
+How would you test it? Probably, you’d write something like the following code.
+
+```jsx
+const assert = require("assert");
+const Cart = require("./Cart.js");
+
+// Adds an item to the cart
+const cart = new Cart();
+cart.addToCart("cheesecake");
+// Removes the recently added item
+cart.removeFromCart("cheesecake");
+
+// Checks whether the cart’s items property is an empty array
+assert.deepStrictEqual(cart.items, []);
+
+console.log("The removeFromCart function can remove an item from the cart");
+
+```
+
+First, your test sets up a scenario by adding a cheesecake to the cart.
+Then it calls the function you want to test (in this case, removeFromCart).
+Finally, it checks whether the content of the cart matches what you expected it to be.
+Again, the same formula: setup, execution, and verification.
+This sequence is also known as the three As pat- tern: arrange, act, assert.
+Now that you have multiple tests, think about how you’d add them to your Cart.test.js.
+If you paste your new test right after the old one, it won’t run if the first test fails.
+You will also have to be careful to give variables in both tests different names.
+But, most importantly, it would become harder to read and interpret the out- put of each test.
+To be honest, it would be a bit of a mess.
+Test runners can solve this problem.
+They enable you to organize and run multiple tests in a comprehensive manner, providing meaningful and easily readable results.
+At the present moment, the most popular testing tool in the JavaScript ecosystem is called Jest.
+It is the main tool I’ll use throughout this book.
+Jest is a testing framework created at Facebook.
+It focuses on simplicity and, there- fore, ships with everything you need to start writing tests straightaway.
+Let’s install Jest so that we can write unit tests more concisely.
+Go ahead and install it globally with the command npm install -g jest.
+Without a configuration file, jest.config.js, or a package.json file, Jest will not run, so remember to add a package.json file to the folder that contains your code.
+TIP You can quickly add a default package.json file to a folder by running npm init -y.
+Now, instead of manually running your test file with Node.js, you will use Jest and tell it to load and execute tests.
+NOTE By default, Jest loads all files ending in .test.js, .spec.js, or tests inside folders named tests.
+Prepare your tests for Jest to run by wrapping them into the test function that Jest adds to the global scope.
+You can use this function to organize multiple tests within a single file and indicate what should run.
+It takes the test’s name as its first argument and a callback function containing the actual test as the second argument.
+Once you have wrapped the previous tests into Jest’s test function, your Cart.test.js file should look like this.
+
+```jsx
+const assert = require("assert");
+const Cart = require("./Cart.js");
+
+// Encapsulates the first test into a different namespace, isolating its variables and producing more readable output
+test("The addToCart function can add an item to the cart", () => {
+  // Arrange: creates an empty cart
+  const cart = new Cart();
+  // Act: exercises the addToCart function
+  cart.addToCart("cheesecake");
+  // Assert: checks whether cart contains the newly added item
+  assert.deepStrictEqual(cart.items, ["cheesecake"]);
+});
+
+// Encapsulates the second test into a different namespace
+test("The removeFromCart function can remove an item from the cart", () => {
+  // Arrange: creates an empty cart, and adds an item to it
+  const cart = new Cart();
+  cart.addToCart("cheesecake");
+  // Act: exercises the removeFromCart function
+  cart.removeFromCart("cheesecake");
+
+  // Assert: checks whether the cart is empty
+  assert.deepStrictEqual(cart.items, []);
+});
+
+```
+
+Notice how you eliminated the previous if statements used to determine how to gen- erate output by delegating that task to Jest.
+Whenever a test fails, Jest will provide you with a precise diff so that you can see how the actual output was different from what you expected.
+To see how much better Jest’s feedback is, try changing one of the asser- tions so that it fails.
+Finally, to avoid using anything but Jest for your tests, replace the assert library with Jest’s own alternative: expect.
+The expect module is just like Node.js’s assert module, but it’s tailored for Jest and helps it provide feedback that’s even more helpful.
+Like the test function, expect is available in the global scope when running tests within Jest.
+The expect function takes as an argument the actual subject of the asser- tion and returns an object that provides different matcher functions.
+These functions verify whether the actual value matches your expectations.
+Jest’s equivalent to deepStrictEqual is toEqual.
+Replacing your first test’s deep- StrictEqual with toEqual should lead you to code that looks similar to the following listing.
+```jsx
+test("The addToCart function can add an item to the cart", () => {
+  const cart = new Cart();
+  cart.addToCart("cheesecake");
+
+  // Compares the value of the assertion’s target—the argument provided to expect—to the value of the argument passed to toEqual
+  expect(cart.items).toEqual(["cheesecake"]);
+});
+```

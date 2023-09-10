@@ -34,6 +34,7 @@
   - [ ] jest
     - [ ] unit test
     - [ ] dom element test
+  - [ ] Vitest
 - http client 관리
   - [ ] node fetch
   - [ ] axios
