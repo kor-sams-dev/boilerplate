@@ -1,6 +1,6 @@
 import Carousel from "../../components/carousel/carousel";
 
-const CarouselPage = () => {
+export const CarouselPage = () => {
   return (
     <div
       style={{
@@ -15,5 +15,3 @@ const CarouselPage = () => {
     </div>
   );
 };
-
-export default CarouselPage;
