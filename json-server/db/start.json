@@ -26,5 +26,25 @@
     { "id": 1, "body": "some comment", "postId": 1 },
     { "id": 2, "body": "some comment", "postId": 3 }
   ],
-  "profile": { "name": "typicode" }
+  "profile": { "name": "typicode" },
+  "categories": [
+    {
+      "id": 1,
+      "name": "카테고리 이름입니당",
+      "description": "카테고리 설명이지요",
+      "isArchive": false
+    },
+    {
+      "id": 2,
+      "name": "두번째 카테고리 이름이지요",
+      "description": "카테고리 설명!!!!!",
+      "isArchive": false
+    },
+    {
+      "id": 3,
+      "name": "아카이빙네임",
+      "description": "아카이빙 디스크륍션",
+      "isArchive": false
+    }
+  ]
 }
